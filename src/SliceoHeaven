@@ -1,8 +1,6 @@
-public class Slice_o_Heaven {
+public class SliceoHeaven {
     public String storeAddress;
-
     private String storeMenu;
-
     public String storeName;
     public long storePhone;
     public String storeEmail;
@@ -13,6 +11,40 @@ public class Slice_o_Heaven {
     private String drinks;
     private double orderTotal;
 
+    private final String DEF_ORDER_ID = "DEF-SOH-099";
+    private final String DEF_PIZZA_INGREDIENTS = "Mozzarella Cheese";
+    private final double DEF_ORDER_TOTAL = 15.00;
+
+    public SliceoHeaven() {
+        this.orderID = DEF_ORDER_ID;
+        this.pizzaIngredients = DEF_PIZZA_INGREDIENTS;
+        this.orderTotal = DEF_ORDER_TOTAL;
+        this.sides = "";
+        this.drinks = "";
+    }
+
+    public SliceoHeaven(String orderID,String pizzaIngredients,double orderTotal) {
+        this.orderID = orderID;
+        this.pizzaIngredients = pizzaIngredients;
+        this.orderTotal = orderTotal;
+    }
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
+    public double getOrderTotal() {
+        return orderTotal;
+    }
+
+    public void setOrderTotal(double orderTotal) {
+        this.orderTotal = orderTotal;
+    }
+
     public void takeOrder(String id, double total, String selectedSides, String selectedDrinks) {
         orderID = id;
         orderTotal = total;
@@ -20,14 +52,6 @@ public class Slice_o_Heaven {
         drinks = selectedDrinks;
 
         System.out.println("Order accepted!");
-
-        if (sides != null &&!sides.isEmpty()) {
-            orderTotal += 10;
-        }
-        if (drinks != null &&!drinks.isEmpty()) {
-            orderTotal += 5;
-        }
-
         System.out.println("Order is being prepared");
 
         makePizza();
@@ -51,6 +75,5 @@ public class Slice_o_Heaven {
 
         System.out.println("Order ID: " + orderID);
         System.out.println("Order Total: " + orderTotal);
+        
     }
-    
-}
